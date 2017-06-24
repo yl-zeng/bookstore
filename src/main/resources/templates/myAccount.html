@@ -13,14 +13,16 @@
 			<h1 class="text-center">My Account</h1>
 			<div class="col-sm-6 col-sm-offset-3">
 				<ul class="nav nav-tabs">
-					<li class="active"><a data-toggle="tab" href="#tab-1">Create
+					<li th:classappend="${classActiveNewUser}?active:''"><a data-toggle="tab" href="#tab-1">Create
 							New Account</a></li>
-					<li><a data-toggle="tab" href="#tab-2">Login</a></li>
-					<li><a data-toggle="tab" href="#tab-3">Forget Password</a></li>
+					<li th:classappend="${classActiveLogin}?active:''"><a data-toggle="tab" href="#tab-2">Login</a></li>
+					<li th:classappend="${classActiveForgetPassword}?active:''"><a data-toggle="tab" href="#tab-3">Forget Password</a></li>
 				</ul>
 
+
+				<!-- Create new Account -->
 				<div class="tab-content">
-					<div id="tab-1" class="tab-pane fade in active">
+					<div id="tab-1" class="tab-pane fade" th:classappend="${classActiveNewUser}? 'in active'">
 						<div class="panel panel-default">
 							<div class="panel-body">
 								<form style="margin-top:10px">
@@ -38,8 +40,8 @@
 						</div>
 					</div>
 
-
-					<div id="tab-2" class="tab-pane fade">
+					<!-- Login -->
+					<div id="tab-2" class="tab-pane fade" th:classappend="${classActiveLogin}? 'in active'">
 						<div class="panel panel-default">
 							<div class="panel-body">
 								<form style="margin-top:10px">
@@ -56,7 +58,10 @@
 							</div>
 						</div>
 					</div>
-					<div id="tab-3" class="tab-pane fade">
+					
+					
+					<!-- Forget Password -->
+					<div id="tab-3" class="tab-pane fade" th:classappend="${classActiveForgetPassword}? 'in active'">
 						<div class="panel panel-default">
 							<div class="panel-body">
 								<form style="margin-top:10px">
