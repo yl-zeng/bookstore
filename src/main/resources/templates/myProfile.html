@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+
+<head th:replace="common/header :: common-header" />
+
+<body>
+
+	<div th:replace="common/header :: navbar"></div>
+
+
+	<div class="container-fluid box">
+		<div class="row">
+			<h1 class="text-center">
+				<span th:text="${#strings.toUpperCase{user.username}}"></span>
+			</h1>
+			<div class="col-sm-6 col-sm-offset-3">
+				<ul class="nav nav-tabs">
+					<li th:classappend="${classActiveEdit}?active:''"><a
+						data-toggle="tab" href="#tab-1">Edit</a></li>
+					<li th:classappend="${classActiveOrder}?active:''"><a
+						data-toggle="tab" href="#tab-2">Orders</a></li>
+					<li th:classappend="${classActiveBilling}?active:''"><a
+						data-toggle="tab" href="#tab-3">Billing</a></li>
+					<li th:classappend="${classActiveShipping}?active:''"><a
+						data-toggle="tab" href="#tab-4">Shipping</a></li>
+				</ul>
+
+
+
+				<div class="tab-content">
+
+					<!-- Edit User Information -->
+					<div id="tab-1" class="tab-pane fade"
+						th:classappend="${classActiveEdit}? 'in active'">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<form th:action="@{/updateUserInfo}" method="post"
+									style="margin-top: 10px">
+									<input type="hidden" name="id" th:value="${user.id}" />
+
+									<div th:if="${updateUserInfo}">User Info Updated</div>
+
+									<div class="form-group">
+										<div class="row">
+											<div class="col-xs-6">
+												<label for="firstName">First Name</label> <input type="text"
+													class="form-control" id="firstName" name="firstName"
+													th:value="${user.firstName}" />
+											</div>
+											<div class="col-xs-6">
+												<label for="lastName">Last Name</label> <input type="text"
+													class="form-control" id="lastName" name="lastName"
+													th:value="${user.lastName}" />
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group">
+										<label for="userName">User Name</label> <input type="text"
+											class="form-control" id="userName" name="userName"
+											th:value="${user.userName}" />
+									</div>
+									
+									<div class="form-group">
+										<label for="currentPassword">Current Password</label> <input type="text"
+											class="form-control" id="currentPassword" name="currentPassword"
+											th:value="${currentPassword}" />
+									</div>
+									
+									<p class="text-center">Enter your current password to change email address or password</p>
+									
+									<div class="form-group">
+										<label for="email">* Email Address</label> <input type="text"
+											class="form-control" id="email" name="email"
+											th:value="${user.email}" />
+									</div>
+									
+									<div class="form-group">
+										<label for="txtNewPassword">Password</label> <input type="password"
+											class="form-control" id="txtNewPassword" name="newPassword"/>
+									</div>
+									
+									<div class="form-group">
+										<label for="txtConfirmPassword">Confirm Password</label> <input type="password"
+											class="form-control" id="txtConfirmPassword"/>
+									</div>
+									
+									<button type="submit" class="btn btn-primary">Submit</button>
+								</form>
+							</div>
+						</div>
+					</div>
+
+					<!-- Order -->
+					<div id="tab-2" class="tab-pane fade"
+						th:classappend="${classActiveOrder}? 'in active'">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<form style="margin-top: 10px">
+									<div class="form-group">
+										<label for="email">Email address:</label> <input type="email"
+											class="form-control" />
+									</div>
+									<div class="form-group">
+										<label for="pwd">Password:</label> <input type="password"
+											class="form-control" />
+									</div>
+									<button type="submit" class="btn btn-primary">Submit</button>
+								</form>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- Billing -->
+					<div id="tab-3" class="tab-pane fade"
+						th:classappend="${classActiveBilling}? 'in active'">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<form style="margin-top: 10px">
+									<div class="form-group">
+										<label for="email">Email address:</label> <input type="email"
+											class="form-control" />
+									</div>
+									<div class="form-group">
+										<label for="pwd">Password:</label> <input type="password"
+											class="form-control" />
+									</div>
+									<button type="submit" class="btn btn-primary">Submit</button>
+								</form>
+							</div>
+						</div>
+					</div>
+
+					<!-- Shipping -->
+					<div id="tab-3" class="tab-pane fade"
+						th:classappend="${classActiveShipping}? 'in active'">
+						<div class="panel panel-default">
+							<div class="panel-body">
+								<form style="margin-top: 10px">
+									<div class="form-group">
+										<label for="email">Email address:</label> <input type="email"
+											class="form-control" />
+									</div>
+									<div class="form-group">
+										<label for="pwd">Password:</label> <input type="password"
+											class="form-control" />
+									</div>
+									<button type="submit" class="btn btn-primary">Submit</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<div th:replace="common/header :: body-bottom-scripts"></div>
+
+</body>
+</html>
